@@ -3,73 +3,350 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miguel Campos Araya | Portafolio</title>
+<title>Miguel Campos Araya | Portafolio de Análisis de Datos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --azul-oscuro: #0f2942;
+    --azul-medio: #1d4e73;
+    --azul-claro: #2e6fa3;
+    --gris-fondo: #f7f9fb;
+    --gris-texto: #4a5568;
+    --blanco: #ffffff;
+    --acento: #3d8bd4;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f8; color: #222; line-height: 1.6; }
-  header { background: #1f497d; color: #fff; padding: 60px 20px; text-align: center; }
-  header h1 { font-size: 2.2em; margin-bottom: 10px; }
-  header p { font-size: 1.1em; color: #dbe6f5; }
-  nav { background: #163a5f; text-align: center; padding: 12px; }
-  nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: 600; }
-  nav a:hover { text-decoration: underline; }
-  section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-  h2 { color: #1f497d; border-bottom: 2px solid #1f497d; padding-bottom: 8px; margin-bottom: 20px; }
-  .proyecto { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
-  .proyecto h3 { color: #163a5f; margin-bottom: 8px; }
-  .proyecto p { margin-bottom: 8px; }
-  .proyecto a { color: #1f497d; font-weight: 600; text-decoration: none; }
-  .proyecto a:hover { text-decoration: underline; }
-  .tecnologias { font-size: 0.9em; color: #555; }
-  footer { background: #163a5f; color: #fff; text-align: center; padding: 30px 20px; margin-top: 40px; }
-  footer a { color: #dbe6f5; margin: 0 10px; text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--gris-fondo);
+    color: var(--gris-texto);
+    line-height: 1.7;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+
+  /* NAVBAR */
+  nav {
+    position: sticky;
+    top: 0;
+    background: var(--blanco);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    z-index: 100;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav .logo { font-weight: 700; color: var(--azul-oscuro); font-size: 1.2em; }
+  nav .links a {
+    color: var(--gris-texto);
+    text-decoration: none;
+    margin-left: 28px;
+    font-weight: 500;
+    font-size: 0.95em;
+    transition: color 0.2s;
+  }
+  nav .links a:hover { color: var(--acento); }
+
+  /* HEADER / HERO */
+  header {
+    background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 60%, var(--azul-claro) 100%);
+    color: var(--blanco);
+    padding: 90px 20px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    width: 500px; height: 500px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    top: -200px; right: -150px;
+  }
+  .avatar {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 3px solid rgba(255,255,255,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 2.8em;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+  }
+  header h1 { font-size: 2.4em; font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1; }
+  header .rol { font-size: 1.15em; color: #cfe3f7; font-weight: 500; margin-bottom: 18px; position: relative; z-index: 1; }
+  header .ubicacion { font-size: 0.95em; color: #a9c6e3; position: relative; z-index: 1; }
+  header .tags { margin-top: 26px; position: relative; z-index: 1; }
+  header .tags span {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    margin: 4px;
+  }
+
+  section { max-width: 960px; margin: 0 auto; padding: 70px 24px; }
+  section.alt { background: var(--blanco); }
+
+  .section-title { text-align: center; margin-bottom: 46px; }
+  .section-title h2 { font-size: 1.9em; color: var(--azul-oscuro); font-weight: 700; }
+  .section-title .linea { width: 50px; height: 4px; background: var(--acento); margin: 12px auto 0; border-radius: 2px; }
+  .section-title p { color: var(--gris-texto); margin-top: 10px; font-size: 0.98em; }
+
+  /* SOBRE MI */
+  .sobre-mi-grid { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+  .sobre-mi-texto { flex: 2; min-width: 280px; }
+  .sobre-mi-texto p { margin-bottom: 14px; }
+  .info-lateral { flex: 1; min-width: 240px; background: var(--gris-fondo); border-radius: 12px; padding: 24px; }
+  .info-lateral .item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-size: 0.92em; }
+  .info-lateral .item:last-child { border-bottom: none; }
+  .info-lateral .item span:first-child { color: var(--gris-texto); }
+  .info-lateral .item span:last-child { font-weight: 600; color: var(--azul-oscuro); }
+
+  /* HABILIDADES */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .skill-card {
+    background: var(--gris-fondo);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  .skill-card .icon {
+    width: 54px; height: 54px;
+    background: linear-gradient(135deg, var(--azul-medio), var(--acento));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+    color: #fff; font-size: 1.4em; font-weight: 700;
+  }
+  .skill-card h3 { font-size: 1.05em; color: var(--azul-oscuro); margin-bottom: 6px; }
+  .skill-card p { font-size: 0.88em; color: var(--gris-texto); }
+
+  .barra-grupo { margin-top: 50px; }
+  .barra-item { margin-bottom: 20px; }
+  .barra-item .label { display: flex; justify-content: space-between; font-size: 0.9em; margin-bottom: 6px; color: var(--azul-oscuro); font-weight: 600; }
+  .barra-fondo { background: #e2e8f0; border-radius: 8px; height: 10px; overflow: hidden; }
+  .barra-fill { height: 100%; border-radius: 8px; background: linear-gradient(90deg, var(--azul-medio), var(--acento)); }
+
+  /* PROYECTOS */
+  .proyecto {
+    background: var(--blanco);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(15,41,66,0.06);
+    border-left: 4px solid var(--acento);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .proyecto .icono-proyecto {
+    width: 56px; height: 56px; min-width: 56px;
+    background: var(--gris-fondo);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6em;
+  }
+  .proyecto-contenido { flex: 1; min-width: 240px; }
+  .proyecto h3 { color: var(--azul-oscuro); margin-bottom: 8px; font-size: 1.15em; }
+  .proyecto p { margin-bottom: 10px; font-size: 0.95em; }
+  .proyecto .tecnologias { font-size: 0.82em; color: var(--acento); font-weight: 600; margin-bottom: 12px; }
+  .proyecto a {
+    display: inline-block;
+    background: var(--azul-oscuro);
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 0.88em;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .proyecto a:hover { background: var(--acento); }
+
+  /* CONTACTO / FOOTER */
+  footer {
+    background: var(--azul-oscuro);
+    color: #cfe3f7;
+    text-align: center;
+    padding: 60px 24px 40px;
+  }
+  footer h2 { color: #fff; font-size: 1.6em; margin-bottom: 10px; }
+  footer p { margin-bottom: 30px; color: #a9c6e3; }
+  .contacto-links { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 30px; }
+  .contacto-links a {
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255,255,255,0.08);
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-size: 0.9em;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: background 0.2s;
+  }
+  .contacto-links a:hover { background: var(--acento); }
+  footer .copy { font-size: 0.8em; color: #6f93b7; margin-top: 20px; }
+
+  @media (max-width: 640px) {
+    nav .links a { margin-left: 14px; font-size: 0.85em; }
+    header h1 { font-size: 1.9em; }
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Miguel Campos Araya</h1>
-  <p>Estudiante de Fundamentos de Análisis de Datos | Santiago, Chile</p>
-</header>
-
 <nav>
-  <a href="#sobre-mi">Sobre mí</a>
-  <a href="#proyectos">Proyectos</a>
-  <a href="#contacto">Contacto</a>
+  <div class="logo">Miguel Campos Araya</div>
+  <div class="links">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#habilidades">Habilidades</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#contacto">Contacto</a>
+  </div>
 </nav>
 
+<header>
+  <div class="avatar">MC</div>
+  <h1>Miguel Campos Araya</h1>
+  <p class="rol">Analista de Datos en formación</p>
+  <p class="ubicacion">📍 Santiago, Región Metropolitana, Chile</p>
+  <div class="tags">
+    <span>Python</span>
+    <span>Pandas</span>
+    <span>Limpieza de datos</span>
+    <span>Visualización</span>
+    <span>Análisis estadístico</span>
+  </div>
+</header>
+
 <section id="sobre-mi">
-  <h2>Sobre mí</h2>
-  <p>
-    Soy estudiante en formación en análisis de datos, con interés en transformar información
-    en insights útiles para la toma de decisiones. Combino el aprendizaje de herramientas técnicas
-    con la resolución de problemas reales mediante datos, aplicando limpieza, análisis estadístico
-    y visualización en cada proyecto.
-  </p>
+  <div class="section-title">
+    <h2>Sobre mí</h2>
+    <div class="linea"></div>
+  </div>
+  <div class="sobre-mi-grid">
+    <div class="sobre-mi-texto">
+      <p>
+        Soy estudiante en formación en análisis de datos, con foco en transformar información en
+        insights útiles para la toma de decisiones. Disfruto combinar el aprendizaje de herramientas
+        técnicas con la resolución de problemas reales, aplicando procesos de limpieza, análisis
+        estadístico y visualización en cada proyecto que desarrollo.
+      </p>
+      <p>
+        Aunque aún no cuento con experiencia laboral formal en el área, mis proyectos del curso
+        demuestran capacidad de resolución de problemas reales aplicando buenas prácticas de
+        documentación y control de calidad de datos, por lo que puedo aportar rápidamente a un equipo de trabajo.
+      </p>
+    </div>
+    <div class="info-lateral">
+      <div class="item"><span>Ubicación</span><span>Santiago, Chile</span></div>
+      <div class="item"><span>Formación</span><span>Fundamentos de An. de Datos</span></div>
+      <div class="item"><span>Enfoque</span><span>Análisis de Datos</span></div>
+      <div class="item"><span>Disponibilidad</span><span>Práctica / Proyectos</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="habilidades" class="alt">
+  <div class="section-title">
+    <h2>Habilidades</h2>
+    <div class="linea"></div>
+    <p>Áreas técnicas trabajadas durante el curso</p>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="icon">Py</div>
+      <h3>Python</h3>
+      <p>Manipulación y análisis de datos con Pandas</p>
+    </div>
+    <div class="skill-card">
+      <div class="icon">🧹</div>
+      <h3>Limpieza de datos</h3>
+      <p>Detección de nulos, duplicados e inconsistencias</p>
+    </div>
+    <div class="skill-card">
+      <div class="icon">📊</div>
+      <h3>Visualización</h3>
+      <p>Gráficos y dashboards para comunicar hallazgos</p>
+    </div>
+    <div class="skill-card">
+      <div class="icon">🔗</div>
+      <h3>Git y GitHub</h3>
+      <p>Control de versiones y publicación de proyectos</p>
+    </div>
+  </div>
+
+  <div class="barra-grupo">
+    <div class="barra-item">
+      <div class="label"><span>Python / Pandas</span><span>80%</span></div>
+      <div class="barra-fondo"><div class="barra-fill" style="width:80%"></div></div>
+    </div>
+    <div class="barra-item">
+      <div class="label"><span>Limpieza y preparación de datos</span><span>85%</span></div>
+      <div class="barra-fondo"><div class="barra-fill" style="width:85%"></div></div>
+    </div>
+    <div class="barra-item">
+      <div class="label"><span>Visualización de datos</span><span>70%</span></div>
+      <div class="barra-fondo"><div class="barra-fill" style="width:70%"></div></div>
+    </div>
+    <div class="barra-item">
+      <div class="label"><span>Git / GitHub</span><span>65%</span></div>
+      <div class="barra-fondo"><div class="barra-fill" style="width:65%"></div></div>
+    </div>
+  </div>
 </section>
 
 <section id="proyectos">
-  <h2>Proyectos</h2>
-
-  <div class="proyecto">
-    <h3>Obtención y preparación de datos</h3>
-    <p>Proyecto desarrollado durante el curso de Fundamentos de análisis de datos, enfocado en la
-       limpieza, transformación y preparación de un dataset para análisis posterior.</p>
-    <p class="tecnologias">Tecnologías: Python, Pandas</p>
-    <a href="https://github.com/MigCamp/bootcamp" target="_blank">Ver repositorio →</a>
+  <div class="section-title">
+    <h2>Proyectos</h2>
+    <div class="linea"></div>
+    <p>Trabajos desarrollados durante el curso</p>
   </div>
 
-  <!-- Agrega aquí más proyectos copiando el bloque de arriba -->
+  <div class="proyecto">
+    <div class="icono-proyecto">📁</div>
+    <div class="proyecto-contenido">
+      <h3>Obtención y preparación de datos</h3>
+      <p>
+        Proyecto desarrollado en Python enfocado en la obtención, limpieza y transformación de un
+        dataset real, aplicando validaciones para dejarlo listo para análisis posteriores.
+      </p>
+      <p class="tecnologias">Python · Pandas</p>
+      <a href="https://github.com/MigCamp/bootcamp" target="_blank">Ver repositorio →</a>
+    </div>
+  </div>
+
+  <!-- Para agregar un nuevo proyecto, copia y pega el bloque completo de arriba (div class="proyecto") y edita su contenido -->
 
 </section>
 
 <footer id="contacto">
-  <p>¿Quieres contactarme?</p>
-  <p>
-    <a href="mailto:mig381@gmail.com">Correo</a> |
-    <a href="https://github.com/MigCamp" target="_blank">GitHub</a>
-  </p>
+  <h2>¿Conversamos?</h2>
+  <p>Estoy abierto a nuevas oportunidades, colaboraciones y feedback sobre mis proyectos.</p>
+  <div class="contacto-links">
+    <a href="mailto:tu_correo@ejemplo.com">✉️ Correo</a>
+    <a href="https://www.linkedin.com/in/tu-perfil" target="_blank">💼 LinkedIn</a>
+    <a href="https://github.com/MigCamp" target="_blank">🐙 GitHub</a>
+  </div>
+  <p class="copy">© 2026 Miguel Campos Araya · Portafolio de Análisis de Datos</p>
 </footer>
 
 </body>
